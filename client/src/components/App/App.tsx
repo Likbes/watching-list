@@ -10,7 +10,7 @@ import MovieDetails from '../MovieDetails';
 
 // apollo client setup
 const client = new ApolloClient({
-  uri: 'http://localhost:3005/graphql',
+  uri: 'http://localhost:8080',
 });
 
 const App: React.FC = () => {

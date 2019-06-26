@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import { MovieData } from '../types';
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
@@ -7,4 +8,4 @@ const movieSchema = new Schema({
   directorId: String,
 });
 
-module.exports = mongoose.model('movies', movieSchema);
+export default mongoose.model('movies', movieSchema);

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const directorSchema = new Schema({
@@ -6,4 +6,4 @@ const directorSchema = new Schema({
   age: Number,
 });
 
-module.exports = mongoose.model('directors', directorSchema);
+export default mongoose.model('directors', directorSchema);

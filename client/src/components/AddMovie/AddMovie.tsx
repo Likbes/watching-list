@@ -5,7 +5,6 @@ import AddMovieForm from './AddMovieForm';
 import { IProps, IState, Response } from './types';
 import { getDirectorsQuery, addMovieMutation } from './queries';
 import { getMoviesQuery } from '../MoviesList/queries';
-import { getMovieQuery } from '../MovieDetails/queries';
 
 class AddMovie extends Component<ChildProps<IProps, Response>, IState> {
 
@@ -76,7 +75,6 @@ class AddMovie extends Component<ChildProps<IProps, Response>, IState> {
       variables,
       refetchQueries: [
         { query: getMoviesQuery },
-        { query: getMovieQuery },
       ]
     });
     this.resetState();

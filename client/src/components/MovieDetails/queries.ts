@@ -1,9 +1,9 @@
 import { gql } from 'apollo-boost';
 
 export const getMovieQuery = gql`
-  query getMovieDetails($id: ID) {
+  query getMovieDetails($id: String!) {
     movie(id: $id) {
-      id
+      id,
       name,
       genre,
       directorId,
