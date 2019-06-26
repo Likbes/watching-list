@@ -1,13 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const graphqlHTTP = require('express-graphql');
-const schema = require('../schema/schema');
+const schema = require('./schema/schema');
 
 const app = express();
 const PORT = 3005;
 
 require('dotenv').config();
+
+app.use(cors());
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
