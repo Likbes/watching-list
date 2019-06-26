@@ -5,6 +5,7 @@ import AddMovieForm from './AddMovieForm';
 import { IProps, IState, Response } from './types';
 import { getDirectorsQuery, addMovieMutation } from './queries';
 import { getMoviesQuery } from '../MoviesList/queries';
+import { getMovieQuery } from '../MovieDetails/queries';
 
 class AddMovie extends Component<ChildProps<IProps, Response>, IState> {
 
@@ -39,14 +40,18 @@ class AddMovie extends Component<ChildProps<IProps, Response>, IState> {
       ));
   }
 
-  validateForm = () => {
+  validateForm = (
+    data: { name: string, genre: string, directorId: string }
+  ) => {
     let isValid = true;
-    Object.values(this.state).forEach(v => {
+
+    Object.values(data).forEach(v => {
       if (v === '') {
         isValid = false;
         this.setState({ error: 'Please fill all fields' });
       }
     });
+
     return isValid;
   }
 
@@ -59,16 +64,20 @@ class AddMovie extends Component<ChildProps<IProps, Response>, IState> {
 
   handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (!this.validateForm()) return;
 
     const { name, genre, directorId } = this.state;
     const variables = {
       name, genre, directorId
     };
 
+    if (!this.validateForm(variables)) return;
+
     this.props.addMovieMutation({
       variables,
-      refetchQueries: [{ query: getMoviesQuery }]
+      refetchQueries: [
+        { query: getMoviesQuery },
+        { query: getMovieQuery },
+      ]
     });
     this.resetState();
   }

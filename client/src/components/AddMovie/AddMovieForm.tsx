@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormProps } from './types';
-import styles from './AddMovie.module.scss'
+import styles from './AddMovieForm.module.scss'
 
 const AddMovieForm: React.FC<FormProps> = ({
   name,
@@ -15,7 +15,7 @@ const AddMovieForm: React.FC<FormProps> = ({
       className={styles.addMovie}
       onSubmit={handleSubmit}
     >
-      <ul>
+      <ul className={styles.fields}>
         <li className={styles.field}>
           <label htmlFor="name">Movie name: </label>
           <input
@@ -48,7 +48,7 @@ const AddMovieForm: React.FC<FormProps> = ({
       </ul>
       <button
         type="submit"
-        className="addButton"
+        className={styles.addButton}
       >+</button>
       {error && <p className={styles.error}>{error}</p>}
     </form>

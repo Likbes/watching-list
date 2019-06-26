@@ -6,12 +6,16 @@ export interface IProps {
     movie: Movie,
     error?: any
   },
-  movieId: string | undefined
-}
+  match: {
+    params: {
+      id: string
+    }
+  }
+};
 
-export type InputProps = {
-  movieId: string | undefined
-}
+export type Variables = {
+  id: string | undefined;
+};
 
 export type Response = {
   movie: Movie,

@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql } from 'react-apollo';
-
-import MovieDetails from '../MovieDetails';
 
 import { IProps, Response } from './types';
 import { getMoviesQuery } from './queries';
@@ -10,13 +8,7 @@ import styles from './MoviesList.module.scss';
 
 const MoviesList: React.FC<IProps> = (({ data: { loading, movies, error } }) => {
 
-  const [selected, updateSelectedMovie] = useState<string | undefined>(undefined);
-
-  const handleClick = (id: string) => {
-    updateSelectedMovie(id);
-  };
-
-  if (loading || !movies) return (
+  if (loading) return (
     <p className={styles.moviesList}>Loading...</p>
   );
 
@@ -25,13 +17,15 @@ const MoviesList: React.FC<IProps> = (({ data: { loading, movies, error } }) => 
   );
 
   return (
-    <div className={styles.moviesList}>
-      <ul>{renderMovies(movies, handleClick)}</ul>
-      <MovieDetails movieId={selected} />
-    </div>
+    <>
+      <h1>Likbes' Watching List</h1>
+      <div className={styles.moviesList}>
+        <ul>{renderMovies(movies)}</ul>
+      </div>
+    </>
   );
 });
 
-const withQuery = graphql<{}, Response, {}, IProps>(getMoviesQuery);
+const withQuery = graphql<IProps, Response, {}, {}>(getMoviesQuery);
 
 export default withQuery(MoviesList);

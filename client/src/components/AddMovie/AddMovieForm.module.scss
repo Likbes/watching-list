@@ -1,0 +1,56 @@
+.addMovie {
+  position: relative;
+
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+
+  border-radius: 5px;
+  background-color: rgb(194, 192, 192);
+
+  .fields {
+    margin: 8px 0;
+    padding: 0;
+  }
+
+  .field {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+
+    list-style: none;
+  }
+
+  .addButton {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+
+    padding: 0 10px;
+    border: none;
+    border-radius: 50%;
+
+    color: #fff;
+    cursor: pointer;
+    background-color: #AD1457;
+
+    font-size: 2em;
+  }
+
+  label {
+    text-align: right;
+    padding: 6px;
+  }
+
+  select, input {
+    margin: 4px;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+
+  .error {
+    color: #880E4F;
+    text-align: right;
+    padding: 4px;
+  }
+}

@@ -1,15 +1,16 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
-import { InputProps, IProps, Response } from './types';
+import { IProps, Response, Variables } from './types';
 import { getMovieQuery } from './queries';
 import { renderMovies } from '../../global/utils';
 import styles from './MovieDetails.module.scss';
 
-const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error }, movieId }) => {
+const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error } }) => {
 
-  if (loading || !movie) return (
-    <p className={styles.movieDetails}>No movie selected...</p>
+  if (loading) return (
+    <p className={styles.movieDetails}>Loading...</p>
   );
 
   if (error) return (
@@ -20,25 +21,25 @@ const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error }, movie
 
   return (
     <div className={styles.movieDetails}>
-      <p>Output details: </p>
       {
-        movie &&
         <>
-          <h2>{name}</h2>
-          <p>{genre}</p>
-          <p>{director.name}</p>
-          <p>All movies by this director: {renderMovies(director.movies)}</p>
+          <h2 className={styles.name}>{name}</h2>
+          <p><span>Genre:</span> {genre}</p>
+          <p><span>Director:</span> {director.name}</p>
+          <p>All movies by this director: </p>
+          {renderMovies(director.movies)}
+          <Link to="/" className="link home">Home</Link>
         </>
       }
     </div>
   );
 };
 
-const withQuery = graphql<InputProps, Response, {}, IProps>(getMovieQuery, {
+const withQuery = graphql<IProps, Response, Variables, {}>(getMovieQuery, {
   options: (props) => {
     return {
       variables: {
-        id: props.movieId
+        id: props.match.params.id
       },
     };
   },

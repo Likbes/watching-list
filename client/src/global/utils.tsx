@@ -1,15 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Movie } from './types';
 
-export const renderMovies = (movies: Movie[] | undefined, handleClick?: (id: string) => void) => {
+export const renderMovies = (movies: Movie[] | undefined) => {
   return (
     movies && movies.map(({ name, id }) => (
-      <li
+      <Link
         key={name}
-        onClick={() => {
-          if (handleClick) handleClick(id)
-        }}
-      > {name} </li>
+        to={`/${id}`}
+        className="link"
+      > {name} </Link>
     ))
   );
 }
