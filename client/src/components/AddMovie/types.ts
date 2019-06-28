@@ -14,14 +14,14 @@ export interface IState {
 }
 
 export interface FormProps {
-  name: string,
-  genre: string,
-  error: any,
-  displayDirectors: () => JSX.Element | JSX.Element[] | undefined,
-  handleChange: (
+  name?: string,
+  genre?: string,
+  error?: any,
+  displayDirectors?: () => JSX.Element | JSX.Element[] | undefined,
+  handleChange?: (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void,
-  handleSubmit: (e: FormEvent) => void
+  handleSubmit?: (e: FormEvent) => void
 }
 
 export type Response = {

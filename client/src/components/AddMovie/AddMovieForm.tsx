@@ -3,12 +3,12 @@ import { FormProps } from './types';
 import styles from './AddMovieForm.module.scss'
 
 const AddMovieForm: React.FC<FormProps> = ({
-  name,
-  genre,
-  error,
-  displayDirectors,
-  handleChange,
-  handleSubmit,
+  name = '',
+  genre = '',
+  error = '',
+  displayDirectors = () => { },
+  handleChange = () => { },
+  handleSubmit = () => { },
 }) => {
   return (
     <form

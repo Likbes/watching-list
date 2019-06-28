@@ -7,9 +7,9 @@ import { getMovieQuery } from './queries';
 import { renderMovies } from '../../global/utils';
 import styles from './MovieDetails.module.scss';
 
-const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error } }) => {
+export const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error } }) => {
 
-  if (loading) return (
+  if (loading || !movie.director) return (
     <p className={styles.movieDetails}>Loading...</p>
   );
 
@@ -24,8 +24,8 @@ const MovieDetails: React.FC<IProps> = ({ data: { loading, movie, error } }) => 
       {
         <>
           <h2 className={styles.name}>{name}</h2>
-          <p><span>Genre:</span> {genre}</p>
-          <p><span>Director:</span> {director.name}</p>
+          <p className={styles.genre}><span>Genre:</span> {genre}</p>
+          <p className={styles.director}><span>Director:</span> {director.name}</p>
           <p>All movies by this director: </p>
           {renderMovies(director.movies)}
           <Link to="/" className="link home">Home</Link>

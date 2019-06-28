@@ -3,7 +3,7 @@ import { Movie } from '../../global/types';
 export interface IProps {
   data: {
     loading?: boolean,
-    movies: Movie[] | undefined,
+    movies?: Movie[],
     error?: any
   },
 }

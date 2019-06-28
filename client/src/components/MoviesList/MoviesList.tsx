@@ -6,7 +6,7 @@ import { getMoviesQuery } from './queries';
 import { renderMovies } from '../../global/utils';
 import styles from './MoviesList.module.scss';
 
-const MoviesList: React.FC<IProps> = (({ data: { loading, movies, error } }) => {
+export const MoviesList: React.FC<IProps> = (({ data: { loading, movies, error } }) => {
 
   if (loading) return (
     <p className={styles.moviesList}>Loading...</p>
