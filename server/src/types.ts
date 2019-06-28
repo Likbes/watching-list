@@ -10,3 +10,4 @@ export interface MovieData extends mongoose.Document {
   genre: string;
   directorId: string;
 }
+
